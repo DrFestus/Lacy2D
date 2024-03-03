@@ -1,0 +1,21 @@
+[submodule "Lacy2D/vendor/spdlog"]
+	path = Lacy2D/vendor/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "Lacy2D/vendor/imgui-sfml"]
+	path = Lacy2D/vendor/imgui-sfml
+	url = https://github.com/SFML/imgui-sfml
+[submodule "Lacy2D/vendor/imgui"]
+	path = Lacy2D/vendor/imgui
+	url = https://github.com/ocornut/imgui
+[submodule "Lacy2D/vendor/SFML"]
+	path = Lacy2D/vendor/SFML
+	url = https://github.com/SFML/SFML
+[submodule "Lacy2D/vendor/json"]
+	path = Lacy2D/vendor/json
+	url = https://github.com/nlohmann/json
+[submodule "Lacy2D/vendor/asio"]
+	path = Lacy2D/vendor/asio
+	url = https://github.com/chriskohlhoff/asio
+[submodule "Lacy2D/vendor/mysql-connector-cpp"]
+	path = Lacy2D/vendor/mysql-connector-cpp
+	url = https://github.com/mysql/mysql-connector-cpp
