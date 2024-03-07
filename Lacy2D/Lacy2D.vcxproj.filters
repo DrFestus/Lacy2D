@@ -1,45 +1,78 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Lacy2D">
+      <UniqueIdentifier>{64B03AC0-5052-6596-390D-79EA254EECE6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="Lacy2D\Core">
+      <UniqueIdentifier>{3CB3256D-A868-9E62-315D-98399D119566}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Lacy2D\Events">
+      <UniqueIdentifier>{C8838152-3444-FD88-FD7E-460669FE4165}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lacy2D\Platform">
+      <UniqueIdentifier>{389D0F15-A428-7DD9-AD39-00CE1944D9D9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lacy2D\Platform\Windows">
+      <UniqueIdentifier>{72FFA206-DE36-EB9D-E740-4FC153F71197}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Lacy2D\Core\EntryPoint.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Lacy2D\Core\Version.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Lacy2D.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Lacy2D.h" />
+    <ClInclude Include="src\Lacy2D\Core\Application.h">
+      <Filter>Lacy2D\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Lacy2D\Core\Core.h">
-      <Filter>Header Files</Filter>
+      <Filter>Lacy2D\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lacy2D\Core\EntryPoint.h">
+      <Filter>Lacy2D\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lacy2D\Core\Input.h">
+      <Filter>Lacy2D\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Lacy2D\Core\Log.h">
-      <Filter>Header Files</Filter>
+      <Filter>Lacy2D\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\lacy2Dpch.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Lacy2D\Core\Version.h">
+      <Filter>Lacy2D\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Lacy2D\Core\Window.h">
+      <Filter>Lacy2D\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lacy2D\Events\ApplicationEvent.h">
+      <Filter>Lacy2D\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lacy2D\Events\Event.h">
+      <Filter>Lacy2D\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lacy2D\Events\KeyEvent.h">
+      <Filter>Lacy2D\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lacy2D\Events\MouseEvent.h">
+      <Filter>Lacy2D\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lacy2D\Platform\Windows\WindowsInput.h">
+      <Filter>Lacy2D\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lacy2D\Platform\Windows\WindowsWindow.h">
+      <Filter>Lacy2D\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lacy2Dpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Lacy2D\Core\Application.cpp">
+      <Filter>Lacy2D\Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\Lacy2D\Core\Log.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Lacy2D\Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\lacy2Dpch.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\Lacy2D\Platform\Windows\WindowsInput.cpp">
+      <Filter>Lacy2D\Platform\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="src\Lacy2D\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Lacy2D\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lacy2Dpch.cpp" />
   </ItemGroup>
 </Project>

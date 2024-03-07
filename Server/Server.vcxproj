@@ -82,12 +82,13 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>LACY2D_PLATFORM_WINDOWS;LACY2D_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;..\Lacy2D\vendor\SFML\include;..\Lacy2D\vendor\imgui;..\Lacy2D\vendor\imgui-sfml;..\Lacy2D\vendor\asio\asio\include;..\Lacy2D\vendor\json\include;..\Lacy2D\vendor\mysql-connector-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>..\Lacy2D\src;..\Lacy2D\vendor\spdlog\include;..\Lacy2D\vendor\SFML\include;..\Lacy2D\vendor\imgui;..\Lacy2D\vendor\imgui-sfml;..\Lacy2D\vendor\asio\asio\include;..\Lacy2D\vendor\json\include;..\Lacy2D\vendor\mysqlcpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
+      <AdditionalOptions>-g -fsanitize=address %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -101,7 +102,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>LACY2D_PLATFORM_WINDOWS;LACY2D_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;..\Lacy2D\vendor\SFML\include;..\Lacy2D\vendor\imgui;..\Lacy2D\vendor\imgui-sfml;..\Lacy2D\vendor\asio\asio\include;..\Lacy2D\vendor\json\include;..\Lacy2D\vendor\mysql-connector-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Lacy2D\src;..\Lacy2D\vendor\spdlog\include;..\Lacy2D\vendor\SFML\include;..\Lacy2D\vendor\imgui;..\Lacy2D\vendor\imgui-sfml;..\Lacy2D\vendor\asio\asio\include;..\Lacy2D\vendor\json\include;..\Lacy2D\vendor\mysqlcpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -124,7 +125,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>LACY2D_PLATFORM_WINDOWS;LACY2D_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;..\Lacy2D\vendor\SFML\include;..\Lacy2D\vendor\imgui;..\Lacy2D\vendor\imgui-sfml;..\Lacy2D\vendor\asio\asio\include;..\Lacy2D\vendor\json\include;..\Lacy2D\vendor\mysql-connector-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Lacy2D\src;..\Lacy2D\vendor\spdlog\include;..\Lacy2D\vendor\SFML\include;..\Lacy2D\vendor\imgui;..\Lacy2D\vendor\imgui-sfml;..\Lacy2D\vendor\asio\asio\include;..\Lacy2D\vendor\json\include;..\Lacy2D\vendor\mysqlcpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -142,6 +143,9 @@
       <AdditionalLibraryDirectories>..\Lacy2D\vendor\SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\ServerApp.cpp" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lacy2D\Lacy2D.vcxproj">
       <Project>{64B03AC0-5052-6596-390D-79EA254EECE6}</Project>

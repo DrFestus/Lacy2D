@@ -18,4 +18,7 @@
 	url = https://github.com/chriskohlhoff/asio
 [submodule "Lacy2D/vendor/mysql-connector-cpp"]
 	path = Lacy2D/vendor/mysql-connector-cpp
-	url = https://github.com/mysql/mysql-connector-cpp
+	url = https://github.com/anhstudios/mysql-connector-cpp
+[submodule "Lacy2D/vendor/cppdb"]
+	path = Lacy2D/vendor/cppdb
+	url = https://github.com/melpon/cppdb

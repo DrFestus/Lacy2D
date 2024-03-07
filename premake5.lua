@@ -16,7 +16,7 @@ IncludeDir["ImGui"] = "Lacy2D/vendor/imgui"
 IncludeDir["ImGuiSFML"] = "Lacy2D/vendor/imgui-sfml"
 IncludeDir["asio"] = "Lacy2D/vendor/asio/asio/include"
 IncludeDir["json"] = "Lacy2D/vendor/json/include"
-IncludeDir["mysqlconnectorcpp"] = "Lacy2D/vendor/mysql-connector-cpp/include"
+IncludeDir["mysqlcpp"] = "Lacy2D/vendor/mysqlcpp/include"
 
 include "Lacy2D/vendor/imgui"
 include "Lacy2D/vendor/imgui-sfml"
@@ -30,6 +30,9 @@ project "Lacy2D"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	pchheader "lacy2Dpch.h"
+	pchsource "Lacy2D/src/lacy2Dpch.cpp"
 
 	files
 	{
@@ -51,20 +54,22 @@ project "Lacy2D"
 		"%{IncludeDir.ImGuiSFML}",
 		"%{IncludeDir.asio}",
 		"%{IncludeDir.json}",
-		"%{IncludeDir.mysqlconnectorcpp}"
+		"%{IncludeDir.mysqlcpp}"
 	}
 
 	libdirs 
 	{ 
 		"%{prj.name}/vendor/SFML/lib",
 		"%{prj.name}/vendor/imgui/bin/",
-		"%{prj.name}/vendor/imgui-sfml/bin/"
+		"%{prj.name}/vendor/imgui-sfml/bin/",
+		"%{prj.name}/vendor/mysqlcpp/lib64/vs14/debug"
 	}
 
 	links
 	{
 		"ImGui",
-		"ImGui-SFML"
+		"ImGui-SFML",
+		"mysqlcppconn"
 	}
 
 	externalincludedirs
@@ -86,13 +91,12 @@ project "Lacy2D"
 		defines
 		{
 			"LACY2D_PLATFORM_WINDOWS",
-			"LACY2D_BUILD_DLL"
+			"LACY2D_BUILD_DLL",
 		}
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Client"),
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Server")
+			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Client")
 		}
 
 	filter "configurations:Debug"
@@ -107,6 +111,9 @@ project "Lacy2D"
 			"sfml-audio-d.lib",
 			"sfml-network-d.lib"
 		}
+
+		buildoptions { "-g", "-fsanitize=address" }
+		linkoptions { "-fsanitize=address" }
 
 	filter "configurations:Release"
 		defines "LACY2D_RELEASE"
@@ -147,19 +154,19 @@ project "Client"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/src/**.cpp"
 	}
 
 	includedirs
 	{
-		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include",
+		"Lacy2D/src",
+		"Lacy2D/vendor/spdlog/include",
 		"%{IncludeDir.SFML}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.ImGuiSFML}",
 		"%{IncludeDir.asio}",
 		"%{IncludeDir.json}",
-		"%{IncludeDir.mysqlconnectorcpp}"
+		"%{IncludeDir.mysqlcpp}"
 	}
 
 	libdirs 
@@ -237,19 +244,19 @@ project "Server"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/src/**.cpp"
 	}
 
 	includedirs
 	{
-		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include",
+		"Lacy2D/src",
+		"Lacy2D/vendor/spdlog/include",
 		"%{IncludeDir.SFML}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.ImGuiSFML}",
 		"%{IncludeDir.asio}",
 		"%{IncludeDir.json}",
-		"%{IncludeDir.mysqlconnectorcpp}"
+		"%{IncludeDir.mysqlcpp}"
 	}
 
 	libdirs 

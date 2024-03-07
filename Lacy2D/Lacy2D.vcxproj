@@ -79,13 +79,15 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>lacy2Dpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;LACY2D_PLATFORM_WINDOWS;LACY2D_BUILD_DLL;LACY2D_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\SFML\include;vendor\imgui;vendor\imgui-sfml;vendor\asio\asio\include;vendor\json\include;vendor\mysql-connector-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\SFML\include;vendor\imgui;vendor\imgui-sfml;vendor\asio\asio\include;vendor\json\include;vendor\mysqlcpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>-g -fsanitize=address %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -94,20 +96,21 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-network-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>vendor\SFML\lib;vendor\imgui\bin;vendor\imgui-sfml\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mysqlcppconn.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-network-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>vendor\SFML\lib;vendor\imgui\bin;vendor\imgui-sfml\bin;vendor\mysqlcpp\lib64\vs14\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>-fsanitize=address %(AdditionalOptions)</AdditionalOptions>
     </Lib>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Debug-windows-x86_64\Lacy2D\Lacy2D.lib\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\Lacy2D\Lacy2D.lib ..\bin\Debug-windows-x86_64\Client &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\Lacy2D\Lacy2D.lib ..\bin\Debug-windows-x86_64\Client &gt; nul)
-IF EXIST ..\bin\Debug-windows-x86_64\Lacy2D\Lacy2D.lib\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\Lacy2D\Lacy2D.lib ..\bin\Debug-windows-x86_64\Server &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\Lacy2D\Lacy2D.lib ..\bin\Debug-windows-x86_64\Server &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Debug-windows-x86_64\Lacy2D\Lacy2D.lib\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\Lacy2D\Lacy2D.lib ..\bin\Debug-windows-x86_64\Client &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\Lacy2D\Lacy2D.lib ..\bin\Debug-windows-x86_64\Client &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>lacy2Dpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;LACY2D_PLATFORM_WINDOWS;LACY2D_BUILD_DLL;LACY2D_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\SFML\include;vendor\imgui;vendor\imgui-sfml;vendor\asio\asio\include;vendor\json\include;vendor\mysql-connector-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\SFML\include;vendor\imgui;vendor\imgui-sfml;vendor\asio\asio\include;vendor\json\include;vendor\mysqlcpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -123,20 +126,20 @@ IF EXIST ..\bin\Debug-windows-x86_64\Lacy2D\Lacy2D.lib\ (xcopy /Q /E /Y /I ..\bi
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-audio.lib;sfml-network.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>vendor\SFML\lib;vendor\imgui\bin;vendor\imgui-sfml\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mysqlcppconn.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-audio.lib;sfml-network.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>vendor\SFML\lib;vendor\imgui\bin;vendor\imgui-sfml\bin;vendor\mysqlcpp\lib64\vs14\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Release-windows-x86_64\Lacy2D\Lacy2D.lib\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\Lacy2D\Lacy2D.lib ..\bin\Release-windows-x86_64\Client &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\Lacy2D\Lacy2D.lib ..\bin\Release-windows-x86_64\Client &gt; nul)
-IF EXIST ..\bin\Release-windows-x86_64\Lacy2D\Lacy2D.lib\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\Lacy2D\Lacy2D.lib ..\bin\Release-windows-x86_64\Server &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\Lacy2D\Lacy2D.lib ..\bin\Release-windows-x86_64\Server &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Release-windows-x86_64\Lacy2D\Lacy2D.lib\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\Lacy2D\Lacy2D.lib ..\bin\Release-windows-x86_64\Client &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\Lacy2D\Lacy2D.lib ..\bin\Release-windows-x86_64\Client &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>lacy2Dpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;LACY2D_PLATFORM_WINDOWS;LACY2D_BUILD_DLL;LACY2D_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\SFML\include;vendor\imgui;vendor\imgui-sfml;vendor\asio\asio\include;vendor\json\include;vendor\mysql-connector-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\SFML\include;vendor\imgui;vendor\imgui-sfml;vendor\asio\asio\include;vendor\json\include;vendor\mysqlcpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -152,14 +155,41 @@ IF EXIST ..\bin\Release-windows-x86_64\Lacy2D\Lacy2D.lib\ (xcopy /Q /E /Y /I ..\
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-audio.lib;sfml-network.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>vendor\SFML\lib;vendor\imgui\bin;vendor\imgui-sfml\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mysqlcppconn.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-audio.lib;sfml-network.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>vendor\SFML\lib;vendor\imgui\bin;vendor\imgui-sfml\bin;vendor\mysqlcpp\lib64\vs14\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Dist-windows-x86_64\Lacy2D\Lacy2D.lib\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\Lacy2D\Lacy2D.lib ..\bin\Dist-windows-x86_64\Client &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\Lacy2D\Lacy2D.lib ..\bin\Dist-windows-x86_64\Client &gt; nul)
-IF EXIST ..\bin\Dist-windows-x86_64\Lacy2D\Lacy2D.lib\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\Lacy2D\Lacy2D.lib ..\bin\Dist-windows-x86_64\Server &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\Lacy2D\Lacy2D.lib ..\bin\Dist-windows-x86_64\Server &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Dist-windows-x86_64\Lacy2D\Lacy2D.lib\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\Lacy2D\Lacy2D.lib ..\bin\Dist-windows-x86_64\Client &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\Lacy2D\Lacy2D.lib ..\bin\Dist-windows-x86_64\Client &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Lacy2D.h" />
+    <ClInclude Include="src\Lacy2D\Core\Application.h" />
+    <ClInclude Include="src\Lacy2D\Core\Core.h" />
+    <ClInclude Include="src\Lacy2D\Core\EntryPoint.h" />
+    <ClInclude Include="src\Lacy2D\Core\Input.h" />
+    <ClInclude Include="src\Lacy2D\Core\Log.h" />
+    <ClInclude Include="src\Lacy2D\Core\MySQLDatabase.h" />
+    <ClInclude Include="src\Lacy2D\Core\Version.h" />
+    <ClInclude Include="src\Lacy2D\Core\Window.h" />
+    <ClInclude Include="src\Lacy2D\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Lacy2D\Events\Event.h" />
+    <ClInclude Include="src\Lacy2D\Events\KeyEvent.h" />
+    <ClInclude Include="src\Lacy2D\Events\MouseEvent.h" />
+    <ClInclude Include="src\Lacy2D\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Lacy2D\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\lacy2Dpch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Lacy2D\Core\Application.cpp" />
+    <ClCompile Include="src\Lacy2D\Core\Log.cpp" />
+    <ClCompile Include="src\Lacy2D\Core\MySQLDatabase.cpp" />
+    <ClCompile Include="src\Lacy2D\Platform\Windows\WindowsInput.cpp" />
+    <ClCompile Include="src\Lacy2D\Platform\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="src\lacy2Dpch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\imgui\ImGui.vcxproj">
       <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
@@ -167,18 +197,6 @@ IF EXIST ..\bin\Dist-windows-x86_64\Lacy2D\Lacy2D.lib\ (xcopy /Q /E /Y /I ..\bin
     <ProjectReference Include="vendor\imgui-sfml\ImGui-SFML.vcxproj">
       <Project>{DFDD97A2-CB95-D9EF-349D-B24B207474E0}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\Lacy2D.h" />
-    <ClInclude Include="src\lacy2Dpch.h" />
-    <ClInclude Include="src\Lacy2D\Core\Core.h" />
-    <ClInclude Include="src\Lacy2D\Core\EntryPoint.h" />
-    <ClInclude Include="src\Lacy2D\Core\Log.h" />
-    <ClInclude Include="src\Lacy2D\Core\Version.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\lacy2Dpch.cpp" />
-    <ClCompile Include="src\Lacy2D\Core\Log.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
